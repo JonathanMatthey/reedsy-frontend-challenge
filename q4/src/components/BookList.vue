@@ -3,7 +3,7 @@
         <h2 class="page-title">Top books of all time</h2>
         <input v-model="searchQuery" placeholder="Search by Title or Synopsis" @input="searchBooks"
             class="input-search" />
-        <div class="book-list">
+        <div v-if="filteredBooks.length > 0" class="book-list">
             <div v-for="(book, index) in paginatedBooks" :key="book.slug" class="book-item">
                 <div class="book-info">
                     <div class="book-details">
@@ -24,7 +24,11 @@
                 </router-link>
             </div>
         </div>
-        <div class="pagination">
+        <!-- Message for No Search Results -->
+        <div v-else class="no-results-message">
+            <p>No results found for "{{ searchQuery }}". Please try another search.</p>
+        </div>
+        <div v-if="filteredBooks.length > 0" class="pagination">
             <button @click="prevPage" :disabled="page === 1" class="pagination-button">
                 Previous
             </button>
@@ -107,11 +111,14 @@ export default defineComponent({
     }
 
     .input-search {
-        margin-bottom: 25px;
+        display: block;
+        width: 100%;
+        max-width: 570px;
+        margin: 0 auto 20px;
+        padding: 8px;
+        font-size: 14px;
         border: 1px solid #ccc;
-        padding: 5px 8px;
         border-radius: 5px;
-        font-size: 13px;
     }
 
     .book-list {
@@ -197,6 +204,12 @@ export default defineComponent({
     }
 }
 
+.no-results-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
 
 .pagination {
     display: flex;
