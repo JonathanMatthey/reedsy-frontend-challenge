@@ -1,0 +1,259 @@
+// Variables
+$primary-color: #fbbf24;
+$text-color: #333;
+$background-color: #faf9f4;
+$white: #fff;
+$gray: #6b7280;
+
+// Mixins
+@mixin container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+// Global styles
+body {
+  font-family: Verdana, sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+  line-height: 1.6;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  @include container;
+}
+
+// Header styles
+.top-actions {
+  .container {
+    @include flex-center;
+    justify-content: space-between;
+    padding: 15px 30px 30px 30px;
+    box-sizing: border-box;
+  }
+
+  .top-logo {
+    font-size: 15px;
+    text-align: center;
+    background-color: #ccc;
+    padding: 4px 15px;
+    border-radius: 4px;
+    width: 170px;
+  }
+
+  .top-menu {
+    ul {
+      @include flex-center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-left: 8px;
+
+        a {
+          padding: 8px 15px;
+          border-radius: 4px;
+          font-size: 14px;
+
+          &:hover {
+            background-color: $background-color;
+          }
+        }
+
+        &:hover a,
+        &.active a {
+          background-color: $primary-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+// Main content styles
+.main {
+  padding: 0;
+
+  h1 {
+    font-size: 40px;
+    margin: 0;
+    font-weight: 400;
+    padding: 20px 30px;
+  }
+
+  .container {
+    background-color: $white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+// Featured book styles
+.featured-book {
+  background-color: $background-color;
+  overflow: hidden;
+  padding: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  position: relative;
+
+  .recommended {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: $primary-color;
+    color: $white;
+    padding: 2px 8px;
+    border-bottom-left-radius: 10px;
+    font-size: 14px;
+  }
+
+  img {
+    width: 270px;
+    border-radius: 10px;
+    height: 400px;
+    object-fit: contain;
+  }
+
+  .book-info {
+    padding-left: 20px;
+
+    .title {
+      font-size: 32px;
+      line-height: 40px;
+      margin-bottom: 0px;
+      margin-top: 0;
+    }
+
+    .author {
+      font-size: 14px;
+      color: $gray;
+      margin-bottom: 10px;
+    }
+
+    .synopsis {
+      font-size: 14px;
+      line-height: 20px;
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+// Top voted styles
+.top-voted {
+  h2 {
+    font-size: 28px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 30px;
+    gap: 30px;
+
+    .book {
+      background-color: $background-color;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      text-align: center;
+      padding: 10px;
+
+      .position {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        @include flex-center;
+        justify-content: center;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      img {
+        height: 200px;
+        width: 135px;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .book-info {
+        padding: 0;
+        text-align: left;
+        font-size: 12px;
+
+        .title {
+          margin-bottom: 0px;
+          line-height: 18px;
+        }
+
+        .author {
+          font-size: 14px;
+          color: $gray;
+          margin-bottom: 0px;
+        }
+
+        .synopsis {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}
+
+// Footer styles
+footer {
+  background-color: #1f2937;
+  color: $white;
+  padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+
+  nav {
+    ul {
+      @include flex-center;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 0 10px;
+
+        a {
+          font-size: 14px;
+          padding: 0 20px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
