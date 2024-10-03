@@ -11,9 +11,14 @@ describe("BookList.vue", () => {
     const wrapper = shallowMount(BookList);
     wrapper.setData({
       books: [
-        { title: "Test Book", synopsis: "Test Synopsis", cover: "", rating: "10" }
+        {
+          title: "Test Book",
+          synopsis: "Test Synopsis",
+          cover: "",
+          rating: "10",
+        },
       ],
-      searchQuery: "Test"
+      searchQuery: "Test",
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.findAll(".book-item").length).toBe(1);
