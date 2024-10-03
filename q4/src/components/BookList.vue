@@ -1,6 +1,8 @@
 <template>
     <div class="book-list-container">
         <h2 class="page-title">Top books of all time</h2>
+        <input v-model="searchQuery" placeholder="Search by Title or Synopsis" @input="searchBooks"
+            class="input-search" />
         <div class="book-list">
             <div v-for="(book, index) in paginatedBooks" :key="book.slug" class="book-item">
                 <div class="book-info">
@@ -102,6 +104,14 @@ export default defineComponent({
         text-align: center;
         font-weight: 600;
         margin: 0 0 20px 0;
+    }
+
+    .input-search {
+        margin-bottom: 25px;
+        border: 1px solid #ccc;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 13px;
     }
 
     .book-list {
